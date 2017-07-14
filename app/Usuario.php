@@ -6,12 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usuario extends Model
 {
-    public $table = "user";
-    protected $primaryKey = "oid";
+    public $table = "usuario";
+    protected $primaryKey = "id";
     public $timestamps = false;
-    protected $fillable = ['nombre', 'descripcion','activo'];
+    protected $fillable = ['Nombre', 'Descripcion'];
 
-    public function cartillaProfesionalEmpleado(){
-        return $this->hasMany("App\CartillaProfesionalEmpleado","cartillaProfesionalSeccionId","oid");
-    }
 }
