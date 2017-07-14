@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Usuario;
 
 class UsuarioController extends Controller
 {
@@ -13,7 +15,19 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $usuario =\DB::table('usuario')
+                ->select('usuario.id as id',
+                        'usuario.nombre as nombre',
+                        'usuario.descripcion as descripcion')
+                ->distinct()
+                ->get();
+            return \Response::json(["usuario"=>$usuario],200);
+        } catch(\Exception $e){
+            \Log::info('Error getInfo: '.$e);
+            return \Response::json(["usuario"=>usuario],500);
+            //$e->getMessage()
+        }
     }
 
     /**
