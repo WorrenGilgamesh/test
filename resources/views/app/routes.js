@@ -6,7 +6,7 @@
         $routeProvider
         .when("/", {
             templateUrl : "app/components/user.html",
-            controllerUrl: "app/controllers/userCtrl.js"
+            controller: "userCtrl.js"
         })
         .when("/red", {
             templateUrl : "red.htm"
